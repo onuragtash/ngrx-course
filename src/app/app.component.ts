@@ -4,6 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from './reducers';
 import { Observable } from 'rxjs';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selector';
+import { AuthActions } from './auth/auth.action';
 
 @Component({
              selector: 'app-root',
@@ -56,7 +57,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-
+    this.store.dispatch(AuthActions.logout());
   }
 
 }
