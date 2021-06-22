@@ -10,6 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { AuthService } from './auth.service';
 import { authReducer } from './auth.reducer.';
 import { AuthGuard } from './auth.guard';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth.effects';
 
 @NgModule({
             imports: [
@@ -26,7 +28,7 @@ import { AuthGuard } from './auth.guard';
                                     ]),
               StoreModule.forFeature('auth',
                                      authReducer),
-
+              EffectsModule.forFeature([AuthEffects])
             ],
             declarations: [LoginComponent],
             exports: [LoginComponent]
