@@ -20,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { metaReducers, reducers } from './reducers';
 import { AuthGuard } from './auth/auth.guard';
 import { EffectsModule } from '@ngrx/effects';
+import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 const routes: Routes = [
   {
@@ -54,7 +55,11 @@ const routes: Routes = [
                                                maxAge: 25,
                                                logOnly: environment.production
                                              }),
-              EffectsModule.forRoot([])
+              EffectsModule.forRoot([]),
+              StoreRouterConnectingModule.forRoot({
+                                                    stateKey: 'router',
+                                                    routerState: RouterState.Minimal
+                                                  })
             ],
             bootstrap: [AppComponent]
           })
